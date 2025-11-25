@@ -1,0 +1,10 @@
+project_name: "AI Elderly Health Companion"
+version: "1.0.0"
+ai_model: "gemini-1.5-flash"
+backend: "fastapi"
+deployment: "cloud-run"
+components:
+  - name: "Health Agent"
+    file: "adk-agent/gemini_health_agent.py"
+  - name: "Database"
+    type: "sqlite"

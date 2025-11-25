@@ -8,7 +8,7 @@ from sqlalchemy.orm import Session
 from passlib.context import CryptContext
 import database
 from database import get_db, User, Vital, Alert
-from agent import agent
+from gemini_health_agent import agent
 
 app = FastAPI(title="AI Elderly Health Companion")
 
