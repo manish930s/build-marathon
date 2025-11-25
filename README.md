@@ -1,6 +1,15 @@
-# 🏥 AI Elderly Health Companion
+# AI Elderly Health Companion
 
-> **Bridging the gap between complex medical data and human understanding for our seniors.**
+> **Cloud-based AI companion for elderly users and caregivers.**
+
+## 📋 Project Overview
+**Application Use Case:**
+Cloud-based AI companion for elderly users and caregivers. It uses Gemini 1.5 Flash to interpret health vitals, provide conversational insights, generate alerts, and support a web dashboard for monitoring.
+
+**High-Level Design:**
+FastAPI backend on Cloud Run exposes REST APIs. A custom Health Agent uses Gemini 1.5 Flash and Cloud SQL/PostgreSQL database. Nginx frontend displays dashboards, charts, alerts, and AI chat.
+
+---
 
 ## 🚩 Problem Statement
 As the global population ages, two critical issues have emerged:
@@ -113,8 +122,3 @@ This project is optimized for Google Cloud Run.
       --allow-unauthenticated \
       --set-env-vars GEMINI_API_KEY="your_key"
     ```
-
-## 🔮 Future Roadmap
-*   **Voice Integration**: Allow users to speak to the AI instead of typing.
-*   **Wearable Sync**: Connect directly to smartwatches (Fitbit, Apple Watch) for automatic data ingestion.
-*   **Caregiver Portal**: A separate login for family members to view alerts remotely.
