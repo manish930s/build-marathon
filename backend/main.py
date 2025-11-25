@@ -222,4 +222,3 @@ def get_dashboard(username: str, db: Session = Depends(get_db)):
 
 # Mount static files (Frontend)
 app.mount('/', StaticFiles(directory='static', html=True), name='static')
-

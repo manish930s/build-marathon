@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+google-cloud-aiplatform
+google-generativeai
+sqlalchemy
+psycopg2-binary
+litellm
+pydantic
+python-dotenv
+passlib[bcrypt]
+bcrypt==4.0.1
+python-multipart
+requests
+
+aiofiles
