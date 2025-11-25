@@ -1,5 +1,7 @@
 # 🏥 AI Elderly Health Companion
 
+> **Bridging the gap between complex medical data and human understanding for our seniors.**
+
 ## 🚩 Problem Statement
 As the global population ages, two critical issues have emerged:
 1.  **Health Literacy Gap**: Elderly individuals often struggle to understand complex medical data (e.g., "Is 130/90 BP bad?"). Traditional health apps are too technical and dashboard-heavy.
@@ -36,6 +38,20 @@ graph TD
 *   **Database**: **SQLite** (with SQLAlchemy ORM) for reliable, serverless data storage.
 *   **Containerization**: Docker (Ready for Cloud Run deployment).
 
+## 📂 Project Structure
+
+```
+├── adk-agent/          # Backend Logic (FastAPI)
+│   ├── main.py         # API Entry point
+│   ├── agent.py        # AI Logic & Prompt Engineering
+│   ├── database.py     # Database Models & Connection
+│   ├── Dockerfile      # Container definition
+│   └── static/         # Frontend Assets (Served by Backend)
+├── frontend/           # Source Frontend Code
+├── README.md           # Documentation
+└── requirements.txt    # Python Dependencies
+```
+
 ## ✨ Key Features
 
 ### 1. 🤖 Empathetic AI Companion
@@ -57,7 +73,7 @@ graph TD
 *   **Auto-Simulation**: Built-in tool to generate random health data to demonstrate the app's capabilities.
 *   **Manual Input**: Allows users (or testers) to input specific values to test how the AI reacts to different health scenarios.
 
-## 🚀 How to Run
+## 🚀 How to Run Locally
 
 ### Prerequisites
 *   Python 3.9+
@@ -79,12 +95,26 @@ graph TD
     python adk-agent/main.py
     ```
 5.  **Open the Frontend**:
-    Open `frontend/index.html` in your web browser.
+    Open `http://localhost:8080` in your web browser.
+
+## ☁️ Deployment (Google Cloud Run)
+
+This project is optimized for Google Cloud Run.
+
+1.  **Build the Container**:
+    ```bash
+    gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/health-companion
+    ```
+2.  **Deploy**:
+    ```bash
+    gcloud run deploy health-companion \
+      --image gcr.io/YOUR_PROJECT_ID/health-companion \
+      --platform managed \
+      --allow-unauthenticated \
+      --set-env-vars GEMINI_API_KEY="your_key"
+    ```
 
 ## 🔮 Future Roadmap
 *   **Voice Integration**: Allow users to speak to the AI instead of typing.
 *   **Wearable Sync**: Connect directly to smartwatches (Fitbit, Apple Watch) for automatic data ingestion.
 *   **Caregiver Portal**: A separate login for family members to view alerts remotely.
-
-
-
