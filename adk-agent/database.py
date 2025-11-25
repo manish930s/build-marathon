@@ -5,7 +5,8 @@ from sqlalchemy.orm import sessionmaker, relationship
 from datetime import datetime
 
 # Database URL configuration
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./test.db")
+# Use /tmp for Cloud Run (writable directory)
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:////tmp/test.db")
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
