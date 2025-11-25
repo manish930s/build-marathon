@@ -1,22 +1,3 @@
-import os
-from typing import List, Optional
-from datetime import datetime, timedelta
-from database import get_db, Vital, Alert, User
-from sqlalchemy.orm import Session
-import google.generativeai as genai
-from dotenv import load_dotenv
-
-# Load environment variables from .env file
-load_dotenv()
-
-class HealthAgent:
-    def __init__(self):
-        # Configure Gemini API
-        api_key = os.getenv("GEMINI_API_KEY", "")
-        if api_key:
-            genai.configure(api_key=api_key)
-            self.model = genai.GenerativeModel('gemini-1.5-flash')
-            self.use_gemini = True
         else:
             print("⚠️ WARNING: No GEMINI_API_KEY found. Using fallback responses.")
             self.use_gemini = False

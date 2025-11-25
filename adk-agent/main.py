@@ -1,5 +1,24 @@
 from fastapi import FastAPI, Depends, HTTPException, BackgroundTasks
 from fastapi.staticfiles import StaticFiles
+
+"""
+PROJECT: AI Elderly Health Companion
+COMPONENT: Health Data Processing API (FastAPI Backend)
+
+DESCRIPTION:
+This API serves as the central hub for the Health Companion application.
+It handles:
+1.  Health Data Ingestion: Receives vital signs (HR, BP, SpO2) from the frontend.
+2.  Data Processing: Analyzes vitals for abnormalities and triggers alerts.
+3.  AI Integration: Routes chat messages to the Gemini Health Agent.
+4.  User Management: Handles authentication for elderly users and caregivers.
+
+ENDPOINTS:
+-   POST /api/v1/ingest: Process new health data.
+-   POST /api/v1/chat: Interact with the AI Health Companion.
+-   GET /api/v1/dashboard/{username}: Retrieve processed health insights.
+"""
+
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional
