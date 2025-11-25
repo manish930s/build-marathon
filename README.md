@@ -54,6 +54,19 @@ graph TD
 *   **Frontend**: Vanilla HTML5, CSS3, JavaScript (Lightweight, fast, and accessible).
 *   **Backend**: Python 3.9+ with **FastAPI** (High-performance async API).
 *   **AI Engine**: **Google Gemini** (via `google-generativeai` SDK) for natural language understanding and medical context awareness.
+*   **Database**: **SQLite** (with SQLAlchemy ORM) for reliable, serverless data storage.
+*   **Containerization**: Docker (Ready for Cloud Run deployment).
+
+## 📂 Project Structure
+
+```
+├── backend/            # Backend Logic (FastAPI)
+│   ├── main.py         # API Entry point
+│   ├── gemini_health_agent.py # AI Logic (Gemini 1.5 Flash)
+│   ├── database.py     # Database Models & Connection
+│   ├── Dockerfile      # Container definition
+│   └── static/         # Frontend Assets (Served by Backend)
+├── frontend/           # Source Frontend Code
 ├── README.md           # Documentation
 └── requirements.txt    # Python Dependencies
 ```
@@ -89,16 +102,16 @@ graph TD
 1.  **Clone the repository**
 2.  **Install Dependencies**:
     ```bash
-    pip install -r adk-agent/requirements.txt
+    pip install -r requirements.txt
     ```
 3.  **Configure Environment**:
-    Create a `.env` file in `adk-agent/` with your API key:
+    Create a `.env` file in `backend/` with your API key:
     ```
     GEMINI_API_KEY=your_api_key_here
     ```
 4.  **Run the Backend**:
     ```bash
-    python adk-agent/main.py
+    python backend/main.py
     ```
 5.  **Open the Frontend**:
     Open `http://localhost:8080` in your web browser.
