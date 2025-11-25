@@ -1,13 +1,14 @@
 # AI Elderly Health Companion
 
-> **Cloud-based AI companion for elderly users and caregivers.**
+> **Cloud-based AI companion leveraging Gemini 1.5 Flash.**
 
 ## 📋 Project Overview
+
 **Application Use Case:**
-Cloud-based AI companion for elderly users and caregivers. It uses Gemini 1.5 Flash to interpret health vitals, provide conversational insights, generate alerts, and support a web dashboard for monitoring.
+Cloud-based AI companion leveraging Gemini 1.5 Flash to interpret elderly health vitals, providing conversational insights, alerts, and a caregiver web dashboard.
 
 **High-Level Design:**
-FastAPI backend on Cloud Run exposes REST APIs. A custom Health Agent uses Gemini 1.5 Flash and Cloud SQL/PostgreSQL database. Nginx frontend displays dashboards, charts, alerts, and AI chat.
+FastAPI backend on Cloud Run exposes REST APIs. The system incorporates a custom Health Agent using Gemini 1.5 Flash and Cloud SQL/PostgreSQL. An Nginx frontend displays dashboards, charts, alerts, and an AI chat interface.
 
 ---
 
@@ -22,7 +23,23 @@ The **AI Elderly Health Companion** is a smart, empathetic, and accessible web a
 
 Instead of just showing charts, our AI **talks** to the user. It explains health data in simple, warm language, provides personalized advice, and acts as a vigilant guardian that alerts users to potential health risks immediately.
 
+## 🏗️ Architecture
 
+The project follows a modern, decoupled architecture designed for scalability and ease of deployment (e.g., on Google Cloud Platform).
+
+```mermaid
+graph TD
+    User[👴 User / Browser] <-->|HTTP/REST| Frontend[💻 Web Frontend]
+    Frontend <-->|API Calls| Backend[⚙️ FastAPI Backend]
+    Backend <-->|Query/Store| DB[(🗄️ SQLite Database)]
+    Backend <-->|Prompt/Response| AI[🧠 Google Gemini AI]
+    
+    subgraph "Core Components"
+        Backend
+        DB
+        AI
+    end
+```
 
 ### 🛠️ Tech Stack
 *   **Frontend**: Vanilla HTML5, CSS3, JavaScript (Lightweight, fast, and accessible).
@@ -107,3 +124,7 @@ This project is optimized for Google Cloud Run.
       --set-env-vars GEMINI_API_KEY="your_key"
     ```
 
+## 🔮 Future Roadmap
+*   **Voice Integration**: Allow users to speak to the AI instead of typing.
+*   **Wearable Sync**: Connect directly to smartwatches (Fitbit, Apple Watch) for automatic data ingestion.
+*   **Caregiver Portal**: A separate login for family members to view alerts remotely.
