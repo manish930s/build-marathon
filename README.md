@@ -22,23 +22,7 @@ The **AI Elderly Health Companion** is a smart, empathetic, and accessible web a
 
 Instead of just showing charts, our AI **talks** to the user. It explains health data in simple, warm language, provides personalized advice, and acts as a vigilant guardian that alerts users to potential health risks immediately.
 
-## 🏗️ Architecture
 
-The project follows a modern, decoupled architecture designed for scalability and ease of deployment (e.g., on Google Cloud Platform).
-
-```mermaid
-graph TD
-    User[👴 User / Browser] <-->|HTTP/REST| Frontend[💻 Web Frontend]
-    Frontend <-->|API Calls| Backend[⚙️ FastAPI Backend]
-    Backend <-->|Query/Store| DB[(🗄️ SQLite Database)]
-    Backend <-->|Prompt/Response| AI[🧠 Google Gemini AI]
-    
-    subgraph "Core Components"
-        Backend
-        DB
-        AI
-    end
-```
 
 ### 🛠️ Tech Stack
 *   **Frontend**: Vanilla HTML5, CSS3, JavaScript (Lightweight, fast, and accessible).
@@ -122,3 +106,4 @@ This project is optimized for Google Cloud Run.
       --allow-unauthenticated \
       --set-env-vars GEMINI_API_KEY="your_key"
     ```
+
