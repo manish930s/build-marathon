@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost:8080";
+const API_BASE_URL = ""; // Relative path for production
 
 // Switch between login and signup forms
 function switchToSignup() {
