@@ -2,6 +2,15 @@
 
 > **Cloud-based AI companion leveraging Gemini 1.5 Flash.**
 
+## 🔗 Live Demo
+**Access the live application here:** [https://health-companion-80353330204.europe-west1.run.app](https://health-companion-80353330204.europe-west1.run.app)
+
+## 📸 Screenshots
+*(Please add screenshots of the dashboard here)*
+
+## 🎥 Demo Video
+*(Please add a link to your demo video here)*
+
 ## 📋 Project Overview
 
 **Application Use Case:**
