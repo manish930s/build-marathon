@@ -45,19 +45,6 @@ graph TD
 *   **Frontend**: Vanilla HTML5, CSS3, JavaScript (Lightweight, fast, and accessible).
 *   **Backend**: Python 3.9+ with **FastAPI** (High-performance async API).
 *   **AI Engine**: **Google Gemini** (via `google-generativeai` SDK) for natural language understanding and medical context awareness.
-*   **Database**: **SQLite** (with SQLAlchemy ORM) for reliable, serverless data storage.
-*   **Containerization**: Docker (Ready for Cloud Run deployment).
-
-## 📂 Project Structure
-
-```
-├── adk-agent/          # Backend Logic (FastAPI)
-│   ├── main.py         # API Entry point
-│   ├── gemini_health_agent.py # AI Logic (Gemini 1.5 Flash)
-│   ├── database.py     # Database Models & Connection
-│   ├── Dockerfile      # Container definition
-│   └── static/         # Frontend Assets (Served by Backend)
-├── frontend/           # Source Frontend Code
 ├── README.md           # Documentation
 └── requirements.txt    # Python Dependencies
 ```

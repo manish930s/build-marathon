@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Elderly Health Companion</title>
+    <link rel="stylesheet" href="style.css?v=15">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Health<span class="highlight">AI</span></h2>
+            </div>
+            <nav>
+                <button class="nav-btn active" onclick="showSection('dashboard')">📊 Dashboard</button>
+                <button class="nav-btn" onclick="showSection('chat')">💬 Companion Chat</button>
+                <button class="nav-btn" onclick="showSection('settings')">⚙️ Settings</button>
+            </nav>
+            <div class="user-profile">
+                <div class="avatar" id="user-avatar">JS</div>
+                <div class="info">
+                    <p class="name" id="user-name">Joe Smith</p>
+                    <p class="role" id="user-role">Elderly User</p>
+                </div>
+                <button class="logout-btn" onclick="handleLogout()" title="Logout">🚪</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="section active">
+                <header>
+                    <h1>Health Overview</h1>
+                    <p class="date" id="current-date">Today, Nov 24</p>
+                </header>
+
+                <div class="stats-grid">
+                    <div class="card stat-card">
+                        <h3>Heart Rate</h3>
+                        <div class="value">-- <span class="unit">bpm</span></div>
+                        <div class="status normal">--</div>
+                    </div>
+                    <div class="card stat-card">
+                        <h3>Blood Pressure</h3>
+                        <div class="value">--/-- <span class="unit">mmHg</span></div>
+                        <div class="status normal">--</div>
+                    </div>
+                    <div class="card stat-card">
+                        <h3>SpO2</h3>
+                        <div class="value">-- <span class="unit">%</span></div>
+                        <div class="status normal">--</div>
+                    </div>
+                    <div class="card stat-card">
+                        <h3>Glucose</h3>
+                        <div class="value">-- <span class="unit">mg/dL</span></div>
+                        <div class="status normal">--</div>
+                    </div>
+                    <div class="card stat-card">
+                        <h3>Temperature</h3>
+                        <div class="value">-- <span class="unit">°F</span></div>
+                        <div class="status normal">--</div>
+                    </div>
+                </div>
+
+                <div class="dashboard-row">
+                    <div class="card chart-card">
+                        <h3>Weekly Trends</h3>
+                        <canvas id="trendsChart"></canvas>
+                    </div>
+                    <div class="card alerts-card">
+                        <h3>Recent Alerts</h3>
+                        <ul id="alerts-list">
+                            <!-- Populated by JS -->
+                            <li class="alert-item warning">
+                                <span class="icon">!</span>
+                                <div class="msg">No alerts yet</div>
+                                <div class="time">--</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chat Section -->
+            <section id="chat" class="section">
+                <header>
+                    <h1>AI Companion</h1>
+                    <p>Ask me anything about your health data.</p>
+                </header>
+
+                <div class="chat-interface">
+                    <div class="chat-window" id="chat-window">
+                        <div class="message bot">
+                            <div class="bubble">Hello! How are you feeling today? I can help you check your vitals or
+                                answer health questions.</div>
+                        </div>
+                    </div>
+                    <div class="chat-input-area">
+                        <input type="text" id="user-input" placeholder="Type your message...">
+                        <button id="send-btn">Send</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="section">
+                <header>
+                    <h1>Settings</h1>
+                    <p class="date">Configure your health monitoring</p>
+                </header>
+
+                <div class="card setting-card" style="margin-bottom: 2rem;">
+                    <div class="setting-header">
+                        <div class="icon-box simulation-icon">
+                            🎲
+                        </div>
+                        <div class="setting-header-content">
+                            <h3>Auto-Simulation</h3>
+                            <p>Generate random health data to test the dashboard and alerts</p>
+                        </div>
+                    </div>
+                    <button class="action-btn primary-btn" onclick="simulateData()">
+                        <span>🔄</span>
+                        Simulate Random Data
+                    </button>
+                </div>
+
+                <div class="card setting-card">
+                    <div class="setting-header">
+                        <div class="icon-box input-icon">
+                            ✏️
+                        </div>
+                        <div class="setting-header-content">
+                            <h3>Manual Input</h3>
+                            <p>Enter specific values to test alerts (e.g., HR > 100, Glucose > 140)</p>
+                        </div>
+                    </div>
+
+                    <div class="settings-grid">
+                        <div class="input-group">
+                            <label for="manual-hr">
+                                <span class="label-icon">❤️</span>
+                                Heart Rate (bpm)
+                            </label>
+                            <input type="number" id="manual-hr" placeholder="e.g. 72" min="40" max="200">
+                            <div class="input-hint normal">💡 Normal: 60-100 bpm</div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="manual-bp-sys">
+                                <span class="label-icon">🩺</span>
+                                Blood Pressure (mmHg)
+                            </label>
+                            <div style="display: flex; gap: 0.5rem; align-items: center;">
+                                <input type="number" id="manual-bp-sys" placeholder="Systolic (120)" min="70" max="200"
+                                    style="flex: 1;">
+                                <span style="color: var(--text-secondary);">/</span>
+                                <input type="number" id="manual-bp-dia" placeholder="Diastolic (80)" min="40" max="130"
+                                    style="flex: 1;">
+                            </div>
+                            <div class="input-hint normal">💡 Normal: 90-120 / 60-80 mmHg</div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="manual-spo2">
+                                <span class="label-icon">🫁</span>
+                                SpO2 (%)
+                            </label>
+                            <input type="number" id="manual-spo2" placeholder="e.g. 98" min="0" max="100">
+                            <div class="input-hint normal">💡 Normal: 95-100%</div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="manual-glucose">
+                                <span class="label-icon">🩸</span>
+                                Glucose (mg/dL)
+                            </label>
+                            <input type="number" id="manual-glucose" placeholder="e.g. 100" min="40" max="400">
+                            <div class="input-hint normal">💡 Normal: 70-140 mg/dL</div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="manual-temp">
+                                <span class="label-icon">🌡️</span>
+                                Temperature (°F)
+                            </label>
+                            <input type="number" id="manual-temp" placeholder="e.g. 98.6" min="95" max="105" step="0.1">
+                            <div class="input-hint normal">💡 Normal: 97-99.5°F</div>
+                        </div>
+                    </div>
+
+                    <button class="action-btn secondary-btn" onclick="submitManualData()">
+                        <span>📊</span>
+                        Submit Data
+                    </button>
+                </div>
+            </section>
+
+        </main>
+    </div>
+    <script src="app.js?v=16"></script>
+</body>
+
+</html>
