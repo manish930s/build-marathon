@@ -1,0 +1,5 @@
+{
+  "project_title": "AI Elderly Health Companion",
+  "application_use_case": "Cloud-based AI companion leveraging Gemini 1.5 Flash to interpret elderly health vitals, providing conversational insights, alerts, and a caregiver web dashboard.",
+  "high_level_design": "FastAPI backend on Cloud Run exposes REST APIs. The system incorporates a custom Health Agent using Gemini 1.5 Flash and Cloud SQL/PostgreSQL. An Nginx frontend displays dashboards, charts, alerts, and an AI chat interface."
+}
