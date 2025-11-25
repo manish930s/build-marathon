@@ -139,6 +139,12 @@ def ingest_vital(data: VitalInput, background_tasks: BackgroundTasks, db: Sessio
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
     
+    # ==========================================
+    # ALERT GENERATION LOGIC
+    # ==========================================
+    # Checks thresholds for HR, BP, SpO2, Glucose, Temp
+    # Generates Alert records if abnormal
+    # ==========================================
     # Basic Threshold Check (Mock Logic)
     is_abnormal = False
     alert_msg = ""
@@ -216,3 +222,4 @@ def get_dashboard(username: str, db: Session = Depends(get_db)):
 
 # Mount static files (Frontend)
 app.mount('/', StaticFiles(directory='static', html=True), name='static')
+
